@@ -2,7 +2,6 @@
 #include "../include/parse_args.h"
 #include "../include/lower_filter.h"
 #include "../include/null_filter.h"
-#include "../include/process_file.h"
 #include "../include/upper_filter.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,13 +11,11 @@
 int parse_args(int argc, char *argv[], const char **inputFile, const char **outputFile, const char **filter, void (**filter_func)(char *))
 {
     int opt;
-
     if(argc == 1)
     {
         fprintf(stderr, "No options provided. Usage: %s -i inputfile -o outputfile -f filter\n", argv[0]);
         return EXIT_FAILURE;
     }
-
     while((opt = getopt(argc, argv, "i:o:f:")) != -1)
     {
         switch(opt)
@@ -71,6 +68,5 @@ int parse_args(int argc, char *argv[], const char **inputFile, const char **outp
         fprintf(stderr, "Unknown filter: %s. Use 'upper', 'lower', or 'null'.\n", *filter);
         return EXIT_FAILURE;
     }
-
     return EXIT_SUCCESS;
 }

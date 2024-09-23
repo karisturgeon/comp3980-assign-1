@@ -1,6 +1,4 @@
-//
-// Created by kari on 9/17/24.
-//
+
 #include "../include/process_file.h"
 #include <fcntl.h>
 #include <stdio.h>

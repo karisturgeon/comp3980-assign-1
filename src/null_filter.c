@@ -1,6 +1,4 @@
-//
-// Created by kari on 9/17/24.
-//
+
 #include "../include/null_filter.h"
 #include <stdlib.h>
 

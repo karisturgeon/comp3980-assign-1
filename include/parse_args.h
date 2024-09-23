@@ -1,6 +1,3 @@
-//
-// Created by kari on 9/23/24.
-//
 
 #ifndef PARSE_ARGS_H
 #define PARSE_ARGS_H
