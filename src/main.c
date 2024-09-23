@@ -1,5 +1,6 @@
 #include "../include/lower_filter.h"
 #include "../include/null_filter.h"
+#include "../include/process_args.h"
 #include "../include/process_file.h"
 #include "../include/upper_filter.h"
 #include <stdio.h>
@@ -14,7 +15,6 @@ int main(int argc, char *argv[])
     const char *outputFile = NULL;
     const char *filter     = NULL;
     void (*filter_func)(char *);
-
     if(argc == 1)
     {
         fprintf(stderr, "No options provided. Usage: %s -i inputfile -o outputfile -f filter\n", argv[0]);
@@ -27,11 +27,11 @@ int main(int argc, char *argv[])
         {
             case 'i':
                 inputFile = optarg;    // Option '-i' expects a file name as an argument
-                                       //                printf("Input file: %s\n", inputFile);
+                //                printf("Input file: %s\n", inputFile);
                 break;
             case 'o':
                 outputFile = optarg;    // Option '-o' expects a file name as an argument
-                                        //                printf("Output file: %s\n", outputFile);
+                //                printf("Output file: %s\n", outputFile);
                 break;
             case 'f':
                 filter = optarg;

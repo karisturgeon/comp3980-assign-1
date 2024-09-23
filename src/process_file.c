@@ -5,13 +5,14 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/stat.h>
 #include <unistd.h>
 
 void process_file(const char *i, const char *o, void (*filter)(char *))
 {
     int     input_fd;
     int     output_fd;
-    char    buffer;
+    char    ch;
     ssize_t bytes_read;
 
     input_fd = open(i, O_RDONLY | O_CLOEXEC);
@@ -28,10 +29,10 @@ void process_file(const char *i, const char *o, void (*filter)(char *))
         exit(EXIT_FAILURE);
     }
 
-    while((bytes_read = read(input_fd, &buffer, 1)) > 0)
+    while((bytes_read = read(input_fd, &ch, sizeof(char))) > 0)
     {
-        filter(&buffer);
-        if(write(output_fd, &buffer, 1) == -1)
+        filter(&ch);
+        if(write(output_fd, &ch, sizeof(char)) == -1)
         {
             perror("Error writing to output file");
             close(input_fd);
